@@ -1,0 +1,4 @@
+<div class="well" ng-repeat="(id, falafelKiosk) in falafelKiosks">
+    <p class="large">{{falafelKiosk.name}}</p>
+    <progressbar class="progress-striped active" value="falafelKiosk.status" type="success">{{falafelKiosk.status}}% Capacity</progressbar>
+</div>

@@ -1,0 +1,14 @@
+<div class="well edit" ng-repeat="(id, falafelKiosk) in falafelKiosks">
+    <button type="button" class="close" ng-click="removeFalafelKiosk(id)">&times;</button>
+    <input class="large" type="text" ng-model="falafelKiosk.name" ng-blur="updateFalafelKiosk(id)"/>
+    <p class="medium">{{falafelKiosk.status}}% Capacity</p>
+    <input class="balSlider" ng-model="falafelKiosk.status" kendo-slider k-min="0" k-max="100" k-on-change="updateFalafelKiosk(id)"/>
+</div>
+
+<hr/>
+
+<div class="well edit create">
+    <input class="large" type="text" ng-model="newFalafelKiosk.name" placeholder="Enter a name"/>
+    <input class="medium" type="text" ng-model="newFalafelKiosk.status" placeholder="Enter a status"/>
+    <button ng-click="addFalafelKiosk()" class="btn btn-lg btn-success btn-block">Create</button>
+</div>

@@ -1,0 +1,155 @@
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    padding: 10px;
+    border: 10px solid #f5ead9;
+    background: url(../img/wood.jpg);
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+body.loading .modal {
+    display: block;
+}
+
+.well {
+    background: #F4E9D9 !important;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(245, 234, 217, .8) url(../img/loader.gif) 50% 50% no-repeat;
+}
+
+.navbar-clear a:hover.brown {
+    color: #331F18;
+}
+
+input:focus, textarea { outline: none !important; }
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.navbar-clear {
+    background: rgb(255, 255, 255); /* Fall-back for browsers that don't support rgba */
+    background: rgba(255, 255, 255, 0);
+}
+
+.navbar-clear a {
+    color: #f5ead9;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-clear .icon-bar {
+    background-color: #f5ead9;
+}
+
+.navbar-clear .nav>li>a:hover, .navbar-clear .nav>li>a:focus {
+    text-decoration: none;
+    background: rgba(245, 234, 217, .6);
+}
+
+#header {
+    margin-left: 10px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+a.view {
+    color: #333;
+}
+
+a.view:hover, a.view:focus {
+    color: #333;
+}
+
+.x-small {
+    color: #333333;
+    font-size: 11px;
+}
+
+.xlarge {
+    font-size: 36px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.large {
+    font-size: 30px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.medium {
+    font-size: 24px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.create input{
+    margin-bottom: 5px;
+}
+
+.edit input[type=text] {
+    border: 1px solid #F4E9D9;
+    width: 100%;
+    resize: none;
+    background-color: #F4E9D9;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.edit input[type=text]:hover,
+.edit input[type=text]:focus {
+    border: 1px solid #d7cebf;
+    outline: none
+}
+
+.k-slider-horizontal { width: 100% }
