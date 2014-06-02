@@ -18,9 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Falafel Manager"/></a>
+                <a href="#" class="navbar-brand"><img src="img/logo.png" alt="Smoothie Operator"/></a>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse"></div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="brown" href="#/manager">Manager</a></li>
+                    <li ng-if="!currentUser"><a class="brown" href="#/login">Login</a></li>
+                    <li><a class="brown" href="#" ng-if="currentUser" ng-click="logout()">Logout {{currentUser.email}}</a></li>
+                </ul>
+            </div>
         </header>
 
         <div class="content" ng-view=""></div>
@@ -33,6 +39,7 @@
         <script src="libs/angular-animate.min.js"></script>
         <script src="libs/kendo.all.min.js"></script>
         <script src="libs/angular-kendo.js"></script>
+        <script src="libs/ui-bootstrap-tpls-0.10.0.min.js"></script>
 
         <script src="libs/firebase.js"></script>
         <script src="libs/angularfire.js"></script>

@@ -1,4 +1,4 @@
-var app = angular.module('falafelManager', ['ngRoute', 'kendo.directives']);
+var app = angular.module('falafelManager', ['ngRoute', 'ui.bootstrap', 'kendo.directives']);
 
 app.config(function ($routeProvider) {
     $routeProvider.

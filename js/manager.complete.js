@@ -1,4 +1,4 @@
-var app = angular.module('falafelManager', ['ngRoute', 'kendo.directives', 'firebase']);
+var app = angular.module('falafelManager', ['ngRoute', 'ui.bootstrap', 'kendo.directives', 'firebase']);
 
 app.constant('FIREBASE_URI', 'https://falafel-manager.firebaseio.com/');
 
