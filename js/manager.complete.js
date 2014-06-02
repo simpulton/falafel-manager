@@ -1,4 +1,4 @@
-var app = angular.module('falafelManager', ['ngRoute', 'ui.bootstrap', 'kendo.directives', 'firebase']);
+var app = angular.module('falafelManager', ['ngRoute', 'kendo.directives', 'firebase']);
 
 app.constant('FIREBASE_URI', 'https://falafel-manager.firebaseio.com/');
 
@@ -17,21 +17,21 @@ app.config(function ($routeProvider) {
 });
 
 app.controller('MainCtrl', function ($scope, $location, AuthService) {
-    $scope.currentUser = null;
-
     $scope.logout = function () {
         AuthService.logout();
     };
 
     $scope.$on('onLogin', function () {
         $scope.currentUser = AuthService.getCurrentUser();
+        $location.path('/');
     });
 
     $scope.$on('onLogout', function () {
         $scope.currentUser = null;
+        $location.path('/login');
     });
 
-    AuthService.getCurrentUser();
+    $scope.currentUser = AuthService.getCurrentUser();
 });
 
 app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
@@ -81,14 +81,6 @@ app.controller('LoginCtrl', function ($scope, $location, AuthService) {
     $scope.reset = function () {
         $scope.user = { email: '', password: '' };
     };
-
-    $scope.$on('$firebaseSimpleLogin:login', function (e, user) {
-        $location.path('/');
-    });
-
-    $scope.$on('$firebaseSimpleLogin:error', function (e, err) {
-        console.log('ERROR', err);
-    });
 });
 
 app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
