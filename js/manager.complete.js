@@ -1,6 +1,6 @@
 var app = angular.module('falafelManager', ['ngRoute', 'ui.bootstrap', 'kendo.directives', 'firebase']);
 
-app.constant('FIREBASE_URI', 'https://falafel-manager.firebaseio.com/');
+app.constant('FIREBASE_URI', 'PUT_YOUR_FIREBASE_ENDPOINT_HERE');
 
 app.config(function ($routeProvider) {
     $routeProvider.
@@ -16,23 +16,9 @@ app.config(function ($routeProvider) {
         otherwise({redirectTo: '/'});
 });
 
-app.controller('MainCtrl', function ($scope, $location, AuthService) {
-    $scope.logout = function () {
-        AuthService.logout();
-    };
-
-    $scope.$on('onLogin', function () {
-        $scope.currentUser = AuthService.getCurrentUser();
-        $location.path('/');
-    });
-
-    $scope.$on('onLogout', function () {
-        $scope.currentUser = null;
-        $location.path('/login');
-    });
-
-    $scope.currentUser = AuthService.getCurrentUser();
-});
+//-------------------------------------------------------------------------------------------------
+// DEMO ONE: Realtime
+//-------------------------------------------------------------------------------------------------
 
 app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
     $scope.falafelKiosks = FalafelKioskService.getFalafelKiosks();
@@ -67,22 +53,6 @@ app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
     };
 });
 
-app.controller('LoginCtrl', function ($scope, $location, AuthService) {
-    $scope.user = { email: '', password: '' };
-
-    $scope.login = function (email, password) {
-        AuthService.login(email, password);
-    };
-
-    $scope.register = function (email, password) {
-        AuthService.register(email, password);
-    };
-
-    $scope.reset = function () {
-        $scope.user = { email: '', password: '' };
-    };
-});
-
 app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
     var ref = new Firebase(FIREBASE_URI + 'kiosks');
     var falafelKiosks = $firebase(ref);
@@ -109,6 +79,44 @@ app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
         updateFalafelKiosk: updateFalafelKiosk,
         removeFalafelKiosk: removeFalafelKiosk
     }
+});
+
+//-------------------------------------------------------------------------------------------------
+// DEMO TWO: Authentication
+//-------------------------------------------------------------------------------------------------
+
+app.controller('MainCtrl', function ($scope, $location, AuthService) {
+    $scope.logout = function () {
+        AuthService.logout();
+    };
+
+    $scope.$on('onLogin', function () {
+        $scope.currentUser = AuthService.getCurrentUser();
+        $location.path('/');
+    });
+
+    $scope.$on('onLogout', function () {
+        $scope.currentUser = null;
+        $location.path('/login');
+    });
+
+    $scope.currentUser = AuthService.getCurrentUser();
+});
+
+app.controller('LoginCtrl', function ($scope, $location, AuthService) {
+    $scope.user = { email: '', password: '' };
+
+    $scope.login = function (email, password) {
+        AuthService.login(email, password);
+    };
+
+    $scope.register = function (email, password) {
+        AuthService.register(email, password);
+    };
+
+    $scope.reset = function () {
+        $scope.user = { email: '', password: '' };
+    };
 });
 
 app.factory('AuthService', function ($rootScope, $firebaseSimpleLogin, FIREBASE_URI) {

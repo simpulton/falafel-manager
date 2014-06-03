@@ -14,23 +14,9 @@ app.config(function ($routeProvider) {
         otherwise({redirectTo: '/'});
 });
 
-app.controller('MainCtrl', function ($scope, $location, AuthService) {
-    $scope.logout = function () {
-        AuthService.logout();
-    };
-
-    $scope.$on('onLogin', function () {
-        $scope.currentUser = AuthService.getCurrentUser();
-        $location.path('/');
-    });
-
-    $scope.$on('onLogout', function () {
-        $scope.currentUser = null;
-        $location.path('/login');
-    });
-
-    $scope.currentUser = AuthService.getCurrentUser();
-});
+//-------------------------------------------------------------------------------------------------
+// DEMO ONE: Realtime
+//-------------------------------------------------------------------------------------------------
 
 app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
     $scope.falafelKiosks = FalafelKioskService.getFalafelKiosks();
@@ -43,7 +29,7 @@ app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
 
     $scope.setCurrentFalafelKiosk = function (id, falafelKiosk) {
         falafelKiosk.id = id;
-        $scope.currentFalafelKiosk = falafelKiosk ;
+        $scope.currentFalafelKiosk = falafelKiosk;
     };
 
     $scope.addFalafelKiosk = function () {
@@ -62,22 +48,6 @@ app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
     $scope.resetForm = function () {
         $scope.currentFalafelKiosk = null;
         $scope.newFalafelKiosk = { name: '', status: '' };
-    };
-});
-
-app.controller('LoginCtrl', function ($scope, $location, AuthService) {
-    $scope.user = { email: '', password: '' };
-
-    $scope.login = function (email, password) {
-        AuthService.login(email, password);
-    };
-
-    $scope.register = function (email, password) {
-        AuthService.register(email, password);
-    };
-
-    $scope.reset = function () {
-        $scope.user = { email: '', password: '' };
     };
 });
 
@@ -116,6 +86,44 @@ app.factory('FalafelKioskService', function () {
         updateFalafelKiosk: updateFalafelKiosk,
         removeFalafelKiosk: removeFalafelKiosk
     }
+});
+
+//-------------------------------------------------------------------------------------------------
+// DEMO TWO: Authentication
+//-------------------------------------------------------------------------------------------------
+
+app.controller('MainCtrl', function ($scope, $location, AuthService) {
+    $scope.logout = function () {
+        AuthService.logout();
+    };
+
+    $scope.$on('onLogin', function () {
+        $scope.currentUser = AuthService.getCurrentUser();
+        $location.path('/');
+    });
+
+    $scope.$on('onLogout', function () {
+        $scope.currentUser = null;
+        $location.path('/login');
+    });
+
+    $scope.currentUser = AuthService.getCurrentUser();
+});
+
+app.controller('LoginCtrl', function ($scope, $location, AuthService) {
+    $scope.user = { email: '', password: '' };
+
+    $scope.login = function (email, password) {
+        AuthService.login(email, password);
+    };
+
+    $scope.register = function (email, password) {
+        AuthService.register(email, password);
+    };
+
+    $scope.reset = function () {
+        $scope.user = { email: '', password: '' };
+    };
 });
 
 app.factory('AuthService', function ($rootScope) {
