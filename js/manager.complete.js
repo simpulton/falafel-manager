@@ -55,7 +55,7 @@ app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
 
 app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
     var ref = new Firebase(FIREBASE_URI + 'kiosks');
-    var falafelKiosks = $firebase(ref);
+    var falafelKiosks = $firebase(ref).$asArray();
 
     var getFalafelKiosks = function () {
         return falafelKiosks;
