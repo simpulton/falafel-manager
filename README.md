@@ -1,4 +1,4 @@
-falafel-manager
+Realtime Falafel Manager
 ===============
 
-A falafel kiosk manager build with AngularJS and Firebase for ngConf Israel.
+A realtime falafel kiosk manager build with AngularJS and Firebase.
