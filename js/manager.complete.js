@@ -1,4 +1,9 @@
-var app = angular.module('falafelManager', ['ngRoute', 'ui.bootstrap', 'kendo.directives', 'firebase']);
+var app = angular.module('falafelManager', [
+    'ngRoute',
+    'ui.bootstrap',
+    'kendo.directives',
+    'firebase'
+]);
 
 app.constant('FIREBASE_URI', 'PUT_YOUR_FIREBASE_ENDPOINT_HERE');
 
@@ -17,7 +22,7 @@ app.config(function ($routeProvider) {
 });
 
 //-------------------------------------------------------------------------------------------------
-// DEMO ONE: Realtime
+// DEMO: Realtime
 //-------------------------------------------------------------------------------------------------
 
 app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
@@ -55,7 +60,7 @@ app.controller('ManagerCtrl', function ($scope, FalafelKioskService) {
 
 app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
     var ref = new Firebase(FIREBASE_URI + 'kiosks');
-    var falafelKiosks = $firebase(ref).$asArray();
+    var falafelKiosks = $firebase(ref).$asObject();
 
     var getFalafelKiosks = function () {
         return falafelKiosks;
@@ -82,7 +87,7 @@ app.factory('FalafelKioskService', function ($firebase, FIREBASE_URI) {
 });
 
 //-------------------------------------------------------------------------------------------------
-// DEMO TWO: Authentication
+// DEMO: Authentication
 //-------------------------------------------------------------------------------------------------
 
 app.controller('MainCtrl', function ($scope, $location, AuthService) {
