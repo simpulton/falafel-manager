@@ -15,7 +15,7 @@ app.config(function ($routeProvider) {
 });
 
 //-------------------------------------------------------------------------------------------------
-// DEMO ONE: Realtime
+// DEMO: Realtime
 //-------------------------------------------------------------------------------------------------
 
 app.controller('DashboardCtrl', function ($scope, FalafelKioskService) {
@@ -89,7 +89,7 @@ app.factory('FalafelKioskService', function () {
 });
 
 //-------------------------------------------------------------------------------------------------
-// DEMO TWO: Authentication
+// DEMO: Authentication
 //-------------------------------------------------------------------------------------------------
 
 app.controller('MainCtrl', function ($scope, $location, AuthService) {
