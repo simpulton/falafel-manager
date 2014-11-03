@@ -2,7 +2,7 @@
     <button type="button" class="close" ng-click="removeFalafelKiosk(id)">&times;</button>
     <input class="large" type="text" ng-model="falafelKiosk.name" ng-blur="updateFalafelKiosk(id)"/>
     <p class="medium">{{falafelKiosk.status}}% Capacity</p>
-    <input class="balSlider" ng-model="falafelKiosk.status" kendo-slider k-min="0" k-max="100" k-on-change="updateFalafelKiosk(id)"/>
+    <input class="balSlider" k-ng-model="falafelKiosk.status" kendo-slider k-min="0" k-max="100" k-on-change="updateFalafelKiosk(id)"/>
 </div>
 
 <hr/>
